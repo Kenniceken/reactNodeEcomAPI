@@ -1,0 +1,47 @@
+Project Structure
+BACK-END
+---API
+*Project Setup
+* Database Setup
+* User Signup
+* Validation
+* User Signin using JWT
+* Auth/Admin middleware
+* Categories - Create
+* Products - CRUD
+* Products by arrival, Sold, Search
+*/
+
+/**
+ ---FRONT-END
+* REACT CLIENT SIDE
+* Setup
+* Routing / menu
+* Signin /Signup
+* Admin route / private route
+* User / admin dashboard
+* create category
+* create product
+* producrs by seller
+* products by arrival date
+* shop page with filter products by categories / price range
+* filter products based on categories using checkbox
+* filter products based on price using radio buttons
+* search products with option of categories
+* single product view
+* single product view with related products sidebar
+* cart page
+* add product to cart
+* product increment / decrement
+* remove product from cart
+* show total
+* payment integration using brintre
+* checkout
+
+**/
+=====================================
+MongoDB
+mongodb+srv://ecommerce:kn6xGVcCzuFoMrP2@cluster0-hhztz.mongodb.net/ecommerce
+kn6xGVcCzuFoMrP2
+===
+mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb //Local Database
