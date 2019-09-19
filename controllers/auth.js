@@ -2,7 +2,8 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // used to generate login token
 const expressJwt = require('express-jwt'); // used for Authorization verification
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey('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');
+const _ = require('lodash');
 
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
@@ -135,7 +136,7 @@ exports.forgotPassword = (req, res) => {
 		);
 
 		// email data
-		const emailData = {
+		const emailResetData = {
 			from: "noreply@nlaxstore.com",
 			to: email,
 			subject: "Password Reset Instructions",
@@ -151,7 +152,7 @@ exports.forgotPassword = (req, res) => {
 			if (err) {
 				return res.json({ message: err });
 			} else {
-				sgMail.send(emailData);
+				sgMail.send(emailResetData);
 				return res.status(200).json({
 					message: `Email has been sent to ${email}. Follow the instructions to reset your password.`
 				});
