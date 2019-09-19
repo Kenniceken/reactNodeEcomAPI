@@ -2,7 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // used to generate login token
 const expressJwt = require('express-jwt'); // used for Authorization verification
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey('********************************************************************');
 const _ = require('lodash');
 
 const { errorHandler } = require('../helpers/dbErrorHandler');
