@@ -51,16 +51,16 @@ exports.create = (req, res) => {
 	});
 };
 
-
-
-/*======= Update Category Controller Method ==============*/
 exports.update = (req, res) => {
+	console.log('req.body', req.body);
+	console.log('category update param', req.params.categoryId);
+
 	const category = req.category;
 	category.name = req.body.name;
 	category.save((err, data) => {
 		if (err) {
 			return res.status(400).json({
-				error: errorHandler
+				error: errorHandler(err)
 			});
 		}
 		res.json(data);

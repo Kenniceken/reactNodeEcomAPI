@@ -5,17 +5,17 @@ const {
 	register,
 	login, 
 	logout, 
-	requireLogin 
+	requireLogin,
+	forgotPassword,
+	resetPassword
 } = require('../controllers/auth');
-const { userSignupValidator } = require('../validator');
+const { userSignupValidator, passwordResetValidator } = require('../validator');
 
 
 router.post('/register', userSignupValidator, register);
+router.put('/forgot-password', forgotPassword);
+router.put('/reset-password', passwordResetValidator, resetPassword);
 router.post('/login', login);
 router.get('/logout', logout);
-
-
-
-
 
 module.exports = router;

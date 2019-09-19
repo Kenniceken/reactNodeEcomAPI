@@ -1,5 +1,8 @@
-const { Order, CartItem } = require('../models/order')
+const { Order, CartItem } = require('../models/order');
 const { errorHandler } = require('../helpers/dbErrorHandler');
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey('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');
 
 
 exports.orderById = (req, res, next, id) => {
@@ -18,7 +21,6 @@ exports.orderById = (req, res, next, id) => {
 
 exports.create = (req, res) => {
    // console.log('CREATE ORDER', req.body);
-
     req.body.order.user = req.profile;
     const order = new Order(req.body.order);
     order.save((error, data) => {
@@ -27,6 +29,23 @@ exports.create = (req, res) => {
                 error: errorHandler(error)
             });
         }
+        //send email alert to the Admin Email
+        // order.address
+        //order.items.length
+        //order.amount
+        const orderEmailData = {
+          to: 'kennyresume@gmail.com',
+          from: 'noreply@laxstore.com',
+          subject: `A New Order has been Received`,
+          html:
+              `
+              <p>Customer Name: ${order.user.name}</p>
+              <p>Total Items: ${order.items.length}</p>
+              <p>Total Cost: ${order.amount}</p>
+              <p>Login to Admin Home to View Order Details.</p>              
+              `
+        };
+        sgMail.send(orderEmailData);
         res.json(data);
     })
 
